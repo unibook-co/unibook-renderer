@@ -22,5 +22,10 @@ export default defineConfig({
       esmExternals: ["react"],
     },
   },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src/libs"),
+    },
+  },
   plugins: [dts()],
 });
