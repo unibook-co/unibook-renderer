@@ -1,10 +1,11 @@
 import { ComponentProps, forwardRef } from "react";
 
+import { useRendererContext } from "@/hooks/useRendererContext";
+import { BaseContentBlock, Block } from "@/types";
+import { cs } from "@/utils/cn";
+
 import { Asset } from "./asset";
 import { RichText } from "./richText";
-import { BaseContentBlock, Block } from "@/types";
-import { useRendererContext } from "@/hooks/useRendererContext";
-import { cs } from "@/utils/cn";
 
 export interface AssetWrapperProps extends ComponentProps<"div"> {
   blockId: string;

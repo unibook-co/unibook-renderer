@@ -1,13 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import React from "react";
+
 import { useBlocks } from "@/hooks/useBlocks";
 import { useRendererContext } from "@/hooks/useRendererContext";
-import { Block } from "@/types";
-import { Decoration } from "@/types/core.type";
-import React from "react";
-import { PageTitle } from "./pageTitle";
-import { getHashFragmentValue } from "@/libs/renderer-utils/utils";
 import { formatDate } from "@/libs/renderer-utils/formatDate";
 import { parsePageId } from "@/libs/renderer-utils/parsePageId";
+import { getHashFragmentValue } from "@/libs/renderer-utils/utils";
+import { Block } from "@/types";
+import { Decoration } from "@/types/core.type";
+
+import { PageTitle } from "./pageTitle";
+
 
 export interface RichTextProps {
   value: Decoration[] | undefined;

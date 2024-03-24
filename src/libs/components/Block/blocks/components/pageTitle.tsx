@@ -1,7 +1,9 @@
 import * as React from "react";
-import { PageIcon } from "./pageIcon";
+
 import { Block } from "@/types";
 import { cs } from "@/utils/cn";
+
+import { PageIcon } from "./pageIcon";
 import { RichText } from "./richText";
 
 export const PageTitleImpl: React.FC<{

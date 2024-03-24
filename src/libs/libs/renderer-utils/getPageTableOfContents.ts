@@ -1,4 +1,5 @@
 import { BlockType, ID, PageMap, PageBlock } from "@/types";
+
 import { getTextContent } from ".";
 
 export interface TableOfContentsEntry {

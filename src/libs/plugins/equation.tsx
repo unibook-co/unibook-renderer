@@ -1,8 +1,9 @@
 import { ComponentProps, forwardRef } from "react";
 
 import Katex from "@matejmazur/react-katex";
-import { EquationBlock } from "@/types";
+
 import { cs, getBlockTitle } from "@/libs/renderer-utils";
+import { EquationBlock } from "@/types";
 const katexSettings = {
   throwOnError: false,
   strict: false,

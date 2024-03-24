@@ -1,6 +1,7 @@
+import * as React from "react";
+
 import { BlockRenderer } from "@/components/BlockRenderer/BlockRenderer";
 import { Block, SyncPointerBlock as SyncPointerBlockType } from "@/types";
-import * as React from "react";
 
 export const SyncPointerBlock: React.FC<{
   block: Block;

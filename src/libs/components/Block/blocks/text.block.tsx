@@ -2,10 +2,12 @@ import { useRef } from "react";
 
 import { useRendererContext } from "@/hooks/useRendererContext";
 import { cs } from "@/libs/renderer-utils";
-import { RichText } from "./components/richText";
-import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
 
 import { BlockProps } from "../BlockProps";
+import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
+import { RichText } from "./components/richText";
+
 
 export function TextBlock(props: BlockProps) {
   const ref = useRef<HTMLDivElement>(null);

@@ -1,4 +1,5 @@
 import React from "react";
+
 import ReactDOM from "react-dom/client";
 import "katex/dist/katex.min.css";
 import "prismjs/themes/prism.css";
@@ -8,7 +9,6 @@ import "./style.css";
 import { UniBookRenderer } from "./libs";
 import { Code } from "./libs/plugins/code";
 import { Equation } from "./libs/plugins/equation";
-
 import { pageExample } from "./page";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

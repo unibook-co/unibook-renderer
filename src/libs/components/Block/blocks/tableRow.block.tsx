@@ -2,10 +2,13 @@ import { useRef } from "react";
 
 import { useRendererContext } from "@/hooks/useRendererContext";
 import { cs } from "@/libs/renderer-utils";
-import { RichText } from "./components/richText";
-import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
-import { BlockProps } from "../BlockProps";
 import { TableBlock } from "@/types";
+
+import { BlockProps } from "../BlockProps";
+import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
+import { RichText } from "./components/richText";
+
 
 export function TableRowBlock(props: BlockProps) {
   const ref = useRef<HTMLTableRowElement>(null);

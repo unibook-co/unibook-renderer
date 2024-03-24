@@ -1,12 +1,14 @@
 import { useRef } from "react";
 
-import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
 
-import { BlockProps } from "../BlockProps";
 import { useRendererContext } from "@/hooks/useRendererContext";
 import { cs, getBlockParentPage } from "@/libs/renderer-utils";
-import { RichText } from "./components/richText";
 import { getPageTableOfContents } from "@/libs/renderer-utils/getPageTableOfContents";
+
+import { BlockProps } from "../BlockProps";
+import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
+import { RichText } from "./components/richText";
 
 const tocIndentLevelCache: {
   [blockId: string]: number;

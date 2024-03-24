@@ -1,11 +1,15 @@
 import { useRef } from "react";
-import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
+import { useRendererContext } from "@/hooks/useRendererContext";
+import { cs } from "@/utils/cn";
+import { getListNumber } from "@/utils/getListNumber";
 
 import { BlockProps } from "../BlockProps";
-import { useRendererContext } from "@/hooks/useRendererContext";
+import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
+
 import { RichText } from "./components/richText";
-import { getListNumber } from "@/utils/getListNumber";
-import { cs } from "@/utils/cn";
+
 
 export function NumberedListBlock(props: BlockProps) {
   const ref = useRef<HTMLLIElement>(null);

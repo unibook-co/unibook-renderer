@@ -1,11 +1,13 @@
-import { useRendererContext } from "@/hooks/useRendererContext";
-import { Block, CalloutBlock, PageBlock } from "@/types";
 import * as React from "react";
-import { LazyImage } from "./lazyImage";
-import { cs } from "@/utils/cn";
+
 import { DefaultPageIcon } from "@/components/icons/DefaultPageIcon";
+import { useRendererContext } from "@/hooks/useRendererContext";
 import { getBlockIcon, getBlockTitle } from "@/libs/renderer-utils";
 import isUrl from "@/libs/renderer-utils/isURL";
+import { Block, CalloutBlock, PageBlock } from "@/types";
+import { cs } from "@/utils/cn";
+
+import { LazyImage } from "./lazyImage";
 
 const isIconBlock = (value: Block): value is PageBlock | CalloutBlock => {
   return value.type === "page" || value.type === "callout";

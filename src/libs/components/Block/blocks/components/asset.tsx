@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import * as React from "react";
+
 import { useRendererContext } from "@/hooks/useRendererContext";
 import { getTextContent } from "@/libs/renderer-utils";
 import { BaseContentBlock, Block } from "@/types";
-import * as React from "react";
-import { LazyImage } from "./lazyImage";
 import { getYoutubeId } from "@/utils/getYoutubeId";
+
+import { LazyImage } from "./lazyImage";
 import { LiteYouTubeEmbed } from "./liteYoutubeEmbed";
 
 const isServer = typeof window === "undefined";

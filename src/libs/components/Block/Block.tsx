@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { BlockProps } from "./BlockProps";
-
 import { AliasBlock } from "./blocks/alias.block";
 import { AssetBlock } from "./blocks/asset.block";
 import { AudioBlock } from "./blocks/audio.block";

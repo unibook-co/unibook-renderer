@@ -1,5 +1,6 @@
-import { CheckIcon } from "@/components/icons/CheckIcon";
 import * as React from "react";
+
+import { CheckIcon } from "@/components/icons/CheckIcon";
 
 export const Checkbox: React.FC<{
   isChecked: boolean;

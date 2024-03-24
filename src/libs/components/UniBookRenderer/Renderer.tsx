@@ -1,9 +1,13 @@
 import { useMemo } from "react";
-import { UniBookRendererProps } from "./RendererProps";
-import { getMediumZoomMargin } from "@/utils/getMediumZoomMargin";
+
 import mediumZoom from "@fisch0920/medium-zoom";
+
 import { RendererContextProvider } from "@/contexts";
+import { getMediumZoomMargin } from "@/utils/getMediumZoomMargin";
+
 import { BlockRenderer } from "../BlockRenderer/BlockRenderer";
+
+import { UniBookRendererProps } from "./RendererProps";
 
 export function UniBookRenderer({
   components,

@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useRendererContext } from "@/hooks/useRendererContext";
 import { useCallback, useMemo, useRef } from "react";
+
+import { useRendererContext } from "@/hooks/useRendererContext";
 
 /**
  * Progressive, lazy images modeled after Medium's LQIP technique.

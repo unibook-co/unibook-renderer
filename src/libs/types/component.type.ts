@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ComponentPropsWithRef, ReactNode } from "react";
+
 import { CodeBlock } from ".";
 
 export type CodeComponentProps = ComponentPropsWithRef<"code"> & {

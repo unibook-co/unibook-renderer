@@ -2,10 +2,11 @@ import { useRef } from "react";
 
 import { useRendererContext } from "@/hooks/useRendererContext";
 import { cs, getBlockParentPage } from "@/libs/renderer-utils";
-import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+import { getPageTableOfContents } from "@/libs/renderer-utils/getPageTableOfContents";
 
 import { BlockProps } from "../BlockProps";
-import { getPageTableOfContents } from "@/libs/renderer-utils/getPageTableOfContents";
+import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
 
 export function TableOfContentsBlock(props: BlockProps) {
   const ref = useRef<HTMLDivElement>(null);

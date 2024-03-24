@@ -2,11 +2,12 @@ import { useRef } from "react";
 
 import { useRendererContext } from "@/hooks/useRendererContext";
 import { cs, getTextContent } from "@/libs/renderer-utils";
-import { RichText } from "./components/richText";
-import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
 
 import { BlockProps } from "../BlockProps";
+import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
 import { LazyImage } from "./components/lazyImage";
+import { RichText } from "./components/richText";
 
 export function BookmarkBlock(props: BlockProps) {
   const ref = useRef<HTMLDivElement>(null);

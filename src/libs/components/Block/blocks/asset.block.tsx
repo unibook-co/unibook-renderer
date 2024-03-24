@@ -1,8 +1,10 @@
 import { useRef } from "react";
 
 import { useRendererContext } from "@/hooks/useRendererContext";
-import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
 import { BlockProps } from "../BlockProps";
+import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
 import { AssetWrapper } from "./components/assetWrapper";
 
 export function AssetBlock(props: BlockProps) {

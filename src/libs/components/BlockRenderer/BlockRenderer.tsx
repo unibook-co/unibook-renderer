@@ -1,6 +1,8 @@
-import { BlockRendererProps } from "./BlockRendererProps";
 import { useRendererContext } from "@/hooks/useRendererContext";
+
 import { Block } from "../Block/Block";
+
+import { BlockRendererProps } from "./BlockRendererProps";
 
 export function BlockRenderer({
   blockId,

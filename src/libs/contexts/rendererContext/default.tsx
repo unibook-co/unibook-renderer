@@ -1,9 +1,11 @@
-import { defaultMapPageUrl } from "@/libs/renderer-utils/mapPageUrl";
 import { defaultMapImageUrl } from "@/libs/renderer-utils/mapImageUrl";
-import { RendererContextValue } from ".";
+import { defaultMapPageUrl } from "@/libs/renderer-utils/mapPageUrl";
 import { RendererComponents } from "@/types";
+
 import { DefaultLink } from "./components/link.component";
 import { DefaultPageLink } from "./components/pageLink.component";
+
+import { RendererContextValue } from ".";
 
 const dummyComponent = (name: string) => () => {
   console.warn(

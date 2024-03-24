@@ -1,6 +1,7 @@
 import { useRendererContext } from "@/hooks/useRendererContext";
-import { BlockProps } from "./BlockProps";
 import { OverrideBlock } from "@/types/override.type";
+
+import { BlockProps } from "./BlockProps";
 
 export function OverrideBlockDecorator<
   T extends HTMLElement | undefined = HTMLDivElement

@@ -1,10 +1,11 @@
 import { useRef } from "react";
 
 import { useRendererContext } from "@/hooks/useRendererContext";
-import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+import { EquationBlock } from "@/types";
 
 import { BlockProps } from "../BlockProps";
-import { EquationBlock } from "@/types";
+import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
+
 
 export function EquationBlock(props: BlockProps) {
   const ref = useRef<HTMLSpanElement>(null);
