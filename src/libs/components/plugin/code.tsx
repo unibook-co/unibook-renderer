@@ -1,5 +1,9 @@
 import { ComponentPropsWithRef, forwardRef, useEffect, useRef } from "react";
 import { highlightElement } from "prismjs";
+import { CodeBlock } from "@/types";
+import { cs, getBlockTitle } from "@/libs/renderer-utils";
+import { RichText } from "../Block/blocks/components/richText";
+
 import "prismjs/components/prism-clike.min.js";
 import "prismjs/components/prism-css-extras.min.js";
 import "prismjs/components/prism-css.min.js";
@@ -9,9 +13,16 @@ import "prismjs/components/prism-json.min.js";
 import "prismjs/components/prism-jsx.min.js";
 import "prismjs/components/prism-tsx.min.js";
 import "prismjs/components/prism-typescript.min.js";
-import { CodeBlock } from "@/types";
-import { cs, getBlockTitle } from "@/libs/renderer-utils";
-import { RichText } from "../Block/blocks/components/richText";
+import "prismjs/components/prism-yaml.min.js";
+import "prismjs/components/prism-bash.min.js";
+import "prismjs/components/prism-go.min.js";
+import "prismjs/components/prism-graphql.min.js";
+import "prismjs/components/prism-haskell.min.js";
+import "prismjs/components/prism-java.min.js";
+import "prismjs/components/prism-lua.min.js";
+import "prismjs/components/prism-markdown.min.js";
+import "prismjs/components/prism-swift.min.js";
+import "prismjs/components/prism-python.min.js";
 
 export interface CodeProps extends ComponentPropsWithRef<"div"> {
   block: CodeBlock;

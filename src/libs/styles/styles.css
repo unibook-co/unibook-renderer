@@ -981,9 +981,23 @@ svg.notion-page-icon {
   padding: 3px 2px;
 }
 .notion-toggle > summary {
+  display: flex;
   cursor: pointer;
   outline: none;
 }
+.notion-toggle > summary::before {
+  content: "▶";
+  display: inline-flex;
+  width: 1.5em;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  font-size: 0.875rem;
+}
+.notion-toggle[open] > summary::before {
+  content: "▼";
+}
+
 .notion-toggle > div {
   margin-left: 1.1em;
 }
@@ -1243,14 +1257,6 @@ svg.notion-page-icon {
 
 .notion-list-item-property .notion-property-multi_select-item:last-of-type {
   margin-right: 0;
-}
-
-.notion-toggle .notion-table,
-.notion-toggle .notion-board,
-.notion-column .notion-table,
-.notion-column .notion-board {
-  width: 100% !important;
-  max-width: 100% !important;
 }
 
 @media only screen and (max-width: 730px) {

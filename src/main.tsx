@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "katex/dist/katex.min.css";
+import "prismjs/themes/prism.css";
 import "./libs/styles/styles.css";
 import "./style.css";
 

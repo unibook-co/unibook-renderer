@@ -12,7 +12,7 @@ export function UniBookRenderer({
   mapPageUrl,
   mapImageUrl,
   darkMode,
-  isImageZoomAble,
+  isImageZoomAble = true,
   ...rest
 }: UniBookRendererProps) {
   const zoom = useMemo(

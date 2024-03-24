@@ -17,7 +17,7 @@ export function SubHeaderBlock(props: BlockProps) {
   const ctx = useRendererContext();
   const { page, overrideBlocks } = ctx;
 
-  const { block, children, hideBlockId } = props;
+  const { block, hideBlockId } = props;
 
   if (!block) {
     return null;
@@ -86,17 +86,5 @@ export function SubHeaderBlock(props: BlockProps) {
     </OverrideBlockDecorator>
   );
 
-  if (block.format?.toggleable) {
-    return (
-      <details
-        className={cs("notion-toggle", blockId)}
-        data-block-id={props.block.id}
-      >
-        <summary>{headerBlock}</summary>
-        <div>{children}</div>
-      </details>
-    );
-  } else {
-    return headerBlock;
-  }
+  return headerBlock;
 }
