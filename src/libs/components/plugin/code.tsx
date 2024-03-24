@@ -1,4 +1,11 @@
-import { ComponentPropsWithRef, forwardRef, useEffect, useRef } from "react";
+import {
+  ComponentPropsWithRef,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { highlightElement } from "prismjs";
 import { CodeBlock } from "@/types";
 import { cs, getBlockTitle } from "@/libs/renderer-utils";
@@ -23,6 +30,7 @@ import "prismjs/components/prism-lua.min.js";
 import "prismjs/components/prism-markdown.min.js";
 import "prismjs/components/prism-swift.min.js";
 import "prismjs/components/prism-python.min.js";
+import { CopyIcon } from "../icons/CopyIcon";
 
 export interface CodeProps extends ComponentPropsWithRef<"div"> {
   block: CodeBlock;
@@ -31,6 +39,9 @@ export interface CodeProps extends ComponentPropsWithRef<"div"> {
 }
 export const Code = forwardRef<HTMLDivElement, CodeProps>(
   ({ block, defaultLanguage = "typescript", className }, ref) => {
+    const [isCopied, setIsCopied] = useState(false);
+    const copyTimeout = useRef<number>();
+
     const content = getBlockTitle(block);
     const language = (
       block.properties?.language?.[0]?.[0] || defaultLanguage
@@ -48,9 +59,45 @@ export const Code = forwardRef<HTMLDivElement, CodeProps>(
       }
     }, [codeRef]);
 
+    const onClickCopyToClipboard = useCallback(() => {
+      window.navigator.clipboard.writeText(content);
+      setIsCopied(true);
+
+      if (copyTimeout.current) {
+        clearTimeout(copyTimeout.current);
+        copyTimeout.current = undefined;
+      }
+
+      copyTimeout.current = setTimeout(() => {
+        setIsCopied(false);
+      }, 1200) as unknown as number;
+    }, [content, copyTimeout]);
+
     return (
       <div ref={ref} className="notion-code-wrapper">
         <pre className={cs("notion-code", className)}>
+          <div
+            style={{
+              height: "22px",
+            }}
+          />
+          <div className="notion-code-header">
+            <div className="notion-code-language">{language}</div>
+            <div className="notion-code-action">
+              <div
+                className="notion-code-action-item"
+                onClick={onClickCopyToClipboard}
+              >
+                <CopyIcon
+                  style={{
+                    width: "10px",
+                    height: "10px",
+                  }}
+                />{" "}
+                <span>{isCopied ? "Copied" : "Copy"}</span>
+              </div>
+            </div>
+          </div>
           <code className={`language-${language}`} ref={codeRef}>
             {content}
           </code>
