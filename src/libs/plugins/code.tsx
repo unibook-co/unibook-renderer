@@ -9,7 +9,7 @@ import {
 import { highlightElement } from "prismjs";
 import { CodeBlock } from "@/types";
 import { cs, getBlockTitle } from "@/libs/renderer-utils";
-import { RichText } from "../Block/blocks/components/richText";
+import { RichText } from "../components/Block/blocks/components/richText";
 
 import "prismjs/components/prism-clike.min.js";
 import "prismjs/components/prism-css-extras.min.js";
@@ -30,7 +30,7 @@ import "prismjs/components/prism-lua.min.js";
 import "prismjs/components/prism-markdown.min.js";
 import "prismjs/components/prism-swift.min.js";
 import "prismjs/components/prism-python.min.js";
-import { CopyIcon } from "../icons/CopyIcon";
+import { CopyIcon } from "../components/icons/CopyIcon";
 
 export interface CodeProps extends ComponentPropsWithRef<"div"> {
   block: CodeBlock;

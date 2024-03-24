@@ -5,7 +5,10 @@ import "prismjs/themes/prism.css";
 import "./libs/styles/styles.css";
 import "./style.css";
 
-import { UniBookRenderer, Code, Equation } from "./libs";
+import { UniBookRenderer } from "./libs";
+import { Code } from "./libs/plugins/code";
+import { Equation } from "./libs/plugins/equation";
+
 import { pageExample } from "./page";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
