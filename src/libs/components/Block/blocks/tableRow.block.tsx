@@ -37,6 +37,7 @@ export function TableRowBlock(props: BlockProps) {
           backgroundColor && `notion-${backgroundColor}`,
           blockId
         )}
+        data-block-id={props.block.id}
         ref={ref}
       >
         {order.map((column) => {

@@ -24,7 +24,10 @@ export function FileBlock(props: BlockProps) {
       blockRef={ref}
       Block={overrideBlocks.File}
     >
-      <div className={cs("notion-file", blockId)}>
+      <div
+        className={cs("notion-file", blockId)}
+        data-block-id={props.block.id}
+      >
         <components.Link
           className="notion-file-link"
           href={source}

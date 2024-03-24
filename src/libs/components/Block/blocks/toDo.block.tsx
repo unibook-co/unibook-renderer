@@ -6,11 +6,12 @@ import { RichText } from "./components/richText";
 import { OverrideBlockDecorator } from "../OverrideBlockDecorator";
 
 import { BlockProps } from "../BlockProps";
+import { Checkbox } from "./components/checkbox";
 
 export function ToDoBlock(props: BlockProps) {
   const ref = useRef<HTMLDivElement>(null);
   const ctx = useRendererContext();
-  const { components, overrideBlocks } = ctx;
+  const { overrideBlocks } = ctx;
 
   const { block, children, hideBlockId } = props;
 
@@ -24,9 +25,13 @@ export function ToDoBlock(props: BlockProps) {
       props={props}
       blockRef={ref}
     >
-      <div className={cs("notion-to-do", blockId)} ref={ref}>
+      <div
+        className={cs("notion-to-do", blockId)}
+        ref={ref}
+        data-block-id={props.block.id}
+      >
         <div className="notion-to-do-item">
-          <components.Checkbox blockId={blockId} isChecked={isChecked} />
+          <Checkbox blockId={blockId} isChecked={isChecked} />
           <div
             className={cs(
               "notion-to-do-body",

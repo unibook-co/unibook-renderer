@@ -44,7 +44,7 @@ export function BookmarkBlock(props: BlockProps) {
       props={props}
       blockRef={ref}
     >
-      <div className="notion-row" ref={ref}>
+      <div data-block-id={props.block.id} className="notion-row" ref={ref}>
         <components.Link
           target="_blank"
           rel="noopener noreferrer"

@@ -27,6 +27,7 @@ export function CalloutBlock(props: BlockProps) {
           block.format?.block_color && `notion-${block.format?.block_color}_co`,
           blockId
         )}
+        data-block-id={props.block.id}
         ref={ref}
       >
         <PageIcon block={block} />

@@ -31,7 +31,12 @@ export function ColumnBlock(props: BlockProps) {
       Block={overrideBlocks.Column}
       props={props}
     >
-      <div className={cs("notion-column", blockId)} style={style} ref={ref}>
+      <div
+        data-block-id={props.block.id}
+        className={cs("notion-column", blockId)}
+        style={style}
+        ref={ref}
+      >
         {children}
       </div>
       <div className="notion-spacer" />

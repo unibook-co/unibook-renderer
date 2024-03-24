@@ -45,6 +45,7 @@ function NotTopLevelPageBlock(props: BlockProps) {
         blockColor && `notion-${blockColor}`,
         blockId
       )}
+      data-block-id={props.block.id}
       href={mapPageUrl(block.id)}
     >
       <PageTitle block={block} />

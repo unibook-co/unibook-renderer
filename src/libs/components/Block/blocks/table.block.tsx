@@ -18,7 +18,11 @@ export function TableBlock(props: BlockProps) {
       props={props}
       Block={overrideBlocks.Table}
     >
-      <table className={cs("notion-simple-table", blockId)} ref={ref}>
+      <table
+        className={cs("notion-simple-table", blockId)}
+        ref={ref}
+        data-block-id={props.block.id}
+      >
         <tbody>{children}</tbody>
       </table>
     </OverrideBlockDecorator>

@@ -18,7 +18,11 @@ export function ColumnListBlock(props: BlockProps) {
       props={props}
       Block={overrideBlocks.ColumnList}
     >
-      <div className={cs("notion-row", blockId)} ref={ref}>
+      <div
+        data-block-id={props.block.id}
+        className={cs("notion-row", blockId)}
+        ref={ref}
+      >
         {children}
       </div>
     </OverrideBlockDecorator>

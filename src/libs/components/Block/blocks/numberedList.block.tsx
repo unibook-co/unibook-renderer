@@ -7,7 +7,6 @@ import { RichText } from "./components/richText";
 import { getListNumber } from "@/utils/getListNumber";
 import { cs } from "@/utils/cn";
 
-// bulleted_list, numbered_list
 export function NumberedListBlock(props: BlockProps) {
   const ref = useRef<HTMLLIElement>(null);
   const ctx = useRendererContext();

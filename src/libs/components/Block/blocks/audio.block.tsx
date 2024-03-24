@@ -22,7 +22,10 @@ export function AudioBlock(props: BlockProps) {
       props={props}
       Block={overrideBlocks.Audio}
     >
-      <div className={cs("notion-audio", blockId)}>
+      <div
+        className={cs("notion-audio", blockId)}
+        data-block-id={props.block.id}
+      >
         <audio controls preload="none" src={source} />
       </div>
     </OverrideBlockDecorator>

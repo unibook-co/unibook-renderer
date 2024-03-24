@@ -24,6 +24,7 @@ export const AssetWrapper = forwardRef<HTMLDivElement, AssetWrapperProps>(
           value.format?.block_full_width && "notion-asset-wrapper-full",
           blockId
         )}
+        data-block-id={props.block.id}
         ref={ref}
         {...rest}
       >

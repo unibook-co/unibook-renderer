@@ -20,7 +20,11 @@ export function DividerBlock(props: BlockProps) {
       props={props}
       Block={overrideBlocks.Divider}
     >
-      <hr className={cs("notion-hr", blockId)} ref={ref} />
+      <hr
+        data-block-id={props.block.id}
+        className={cs("notion-hr", blockId)}
+        ref={ref}
+      />
     </OverrideBlockDecorator>
   );
 }

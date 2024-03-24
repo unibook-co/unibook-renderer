@@ -19,7 +19,11 @@ export function TransclusionContainerBlock(props: BlockProps) {
       props={props}
       Block={overrideBlocks.TransclusionContainer}
     >
-      <div className={cs("notion-sync-block", blockId)} ref={ref}>
+      <div
+        className={cs("notion-sync-block", blockId)}
+        ref={ref}
+        data-block-id={props.block.id}
+      >
         {children}
       </div>
     </OverrideBlockDecorator>

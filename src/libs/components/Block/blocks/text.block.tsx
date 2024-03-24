@@ -32,6 +32,7 @@ export function TextBlock(props: BlockProps) {
           blockColor && `notion-${blockColor}`,
           blockId
         )}
+        data-block-id={props.block.id}
         ref={ref}
       >
         {block.properties?.title && (

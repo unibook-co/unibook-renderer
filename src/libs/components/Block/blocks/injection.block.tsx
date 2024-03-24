@@ -21,6 +21,7 @@ export function InjectionBlock(props: BlockProps) {
     >
       <div
         className="notion-injection px-[3px] py-[2px] mx-[1px]"
+        data-block-id={props.block.id}
         dangerouslySetInnerHTML={{
           __html: content,
         }}

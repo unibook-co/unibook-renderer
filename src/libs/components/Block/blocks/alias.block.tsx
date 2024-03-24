@@ -25,6 +25,7 @@ export function AliasBlock(props: BlockProps) {
       Block={overrideBlocks.Alias}
     >
       <components.PageLink
+        data-block-id={props.block.id}
         className={cs("notion-page-link", blockPointerId)}
         href={mapPageUrl(blockPointerId)}
         ref={ref}

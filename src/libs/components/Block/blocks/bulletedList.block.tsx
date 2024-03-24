@@ -49,7 +49,7 @@ export function BulletedListBlock(props: BlockProps) {
         props={props}
         Block={overrideBlocks.BulletedList}
       >
-        <li ref={ref}>
+        <li ref={ref} data-block-id={props.block.id}>
           <RichText value={block.properties.title} block={block} />
         </li>
       </OverrideBlockDecorator>

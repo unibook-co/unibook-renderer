@@ -20,7 +20,11 @@ export function ToggleBlock(props: BlockProps) {
       props={props}
       Block={overrideBlocks.Toggle}
     >
-      <details className={cs("notion-toggle", blockId)} ref={ref}>
+      <details
+        className={cs("notion-toggle", blockId)}
+        ref={ref}
+        data-block-id={props.block.id}
+      >
         <summary>
           <RichText value={block.properties?.title} block={block} />
         </summary>

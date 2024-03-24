@@ -31,6 +31,7 @@ export function QuoteBlock(props: BlockProps) {
           blockId
         )}
         ref={ref}
+        data-block-id={props.block.id}
       >
         <div>
           <RichText value={block.properties.title} block={block} />

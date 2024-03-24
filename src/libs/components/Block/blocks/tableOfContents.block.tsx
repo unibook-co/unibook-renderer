@@ -32,6 +32,7 @@ export function TableOfContentsBlock(props: BlockProps) {
           blockColor && `notion-${blockColor}`,
           blockId
         )}
+        data-block-id={props.block.id}
         ref={ref}
       >
         {toc.map((tocItem) => (
