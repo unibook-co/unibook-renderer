@@ -1,4 +1,4 @@
-import { Decoration } from "@/types";
+import { Decoration } from '@/types';
 
 /**
  * Gets the raw, unformatted text content of a block's content value.
@@ -7,17 +7,20 @@ import { Decoration } from "@/types";
  * rich text formatting.
  */
 export const getTextContent = (text?: Decoration[]): string => {
-  if (!text) {
-    return "";
-  } else if (Array.isArray(text)) {
-    return (
-      text?.reduce(
-        (prev, current) =>
-          prev + (current[0] !== "⁍" && current[0] !== "‣" ? current[0] : ""),
-        ""
-      ) ?? ""
-    );
-  } else {
-    return text;
-  }
+    if (!text) {
+        return '';
+    } else if (Array.isArray(text)) {
+        return (
+            text?.reduce(
+                (prev, current) =>
+                    prev +
+                    (current[0] !== '⁍' && current[0] !== '‣'
+                        ? current[0]
+                        : ''),
+                ''
+            ) ?? ''
+        );
+    } else {
+        return text;
+    }
 };

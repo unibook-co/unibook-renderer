@@ -1,17 +1,19 @@
-import { BlockProps } from "@/components/Block/BlockProps";
-import { RendererContextValue } from "@/contexts";
+import { BlockProps } from '@/components/Block/BlockProps';
+import { RendererContextValue } from '@/contexts';
 
 export type OverrideBlockProps<
-  element extends HTMLElement | undefined = HTMLDivElement
+    element extends HTMLElement | undefined = HTMLDivElement,
 > = {
-  children: React.ReactNode;
-  blockProps: BlockProps;
-  blockRef: element extends HTMLElement ? React.RefObject<element> : undefined;
-  blockContext: RendererContextValue;
+    children: React.ReactNode;
+    blockProps: BlockProps;
+    blockRef: element extends HTMLElement
+        ? React.RefObject<element>
+        : undefined;
+    blockContext: RendererContextValue;
 };
 
 export type OverrideBlock<
-  element extends HTMLElement | undefined = HTMLDivElement
+    element extends HTMLElement | undefined = HTMLDivElement,
 > = (props: OverrideBlockProps<element>) => React.ReactNode;
 
 export type AliasOverrideBlock = OverrideBlock<HTMLAnchorElement>;
@@ -64,11 +66,11 @@ export type HeaderOverrideBlockProps = OverrideBlockProps<HTMLHeadingElement>;
 
 export type SubHeaderOverrideBlock = OverrideBlock<HTMLHeadingElement>;
 export type SubHeaderOverrideBlockProps =
-  OverrideBlockProps<HTMLHeadingElement>;
+    OverrideBlockProps<HTMLHeadingElement>;
 
 export type SubSubHeaderOverrideBlock = OverrideBlock<HTMLHeadingElement>;
 export type SubSubHeaderOverrideBlockProps =
-  OverrideBlockProps<HTMLHeadingElement>;
+    OverrideBlockProps<HTMLHeadingElement>;
 
 export type NumberedListOverrideBlock = OverrideBlock<HTMLLIElement>;
 export type NumberedListOverrideBlockProps = OverrideBlockProps<HTMLLIElement>;
@@ -83,11 +85,11 @@ export type TableOverrideBlockProps = OverrideBlockProps<HTMLTableElement>;
 
 export type TableOfContentsOverrideBlock = OverrideBlock<HTMLDivElement>;
 export type TableOfContentsOverrideBlockProps =
-  OverrideBlockProps<HTMLDivElement>;
+    OverrideBlockProps<HTMLDivElement>;
 
 export type TableRowOverrideBlock = OverrideBlock<HTMLTableRowElement>;
 export type TableRowOverrideBlockProps =
-  OverrideBlockProps<HTMLTableRowElement>;
+    OverrideBlockProps<HTMLTableRowElement>;
 
 export type TextOverrideBlock = OverrideBlock<HTMLDivElement>;
 export type TextOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
@@ -100,43 +102,43 @@ export type ToggleOverrideBlockProps = OverrideBlockProps<HTMLDetailsElement>;
 
 export type TransclusionContainerOverrideBlock = OverrideBlock<HTMLDivElement>;
 export type TransclusionContainerOverrideBlockProps =
-  OverrideBlockProps<HTMLDivElement>;
+    OverrideBlockProps<HTMLDivElement>;
 
 export type TransclusionReferenceOverrideBlock = OverrideBlock<undefined>;
 export type TransclusionReferenceOverrideBlockProps =
-  OverrideBlockProps<undefined>;
+    OverrideBlockProps<undefined>;
 
 export type InjectionOverrideBlock = OverrideBlock<HTMLDivElement>;
 export type InjectionOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
 
 export type OverrideBlocks = {
-  Alias?: AliasOverrideBlock;
-  Asset?: AssetOverrideBlock;
-  Audio?: AudioOverrideBlock;
-  Bookmark?: BookmarkOverrideBlock;
-  BulletedList?: BulletedListOverrideBlock;
-  Callout?: CalloutOverrideBlock;
-  Code?: CodeOverrideBlock;
-  Column?: ColumnOverrideBlock;
-  ColumnList?: ColumnListOverrideBlock;
-  Divider?: DividerOverrideBlock;
-  Drive?: DriveOverrideBlock;
-  Embed?: EmbedOverrideBlock;
-  EOI?: EOIOverrideBlock;
-  Equation?: EquationOverrideBlock;
-  File?: FileOverrideBlock;
-  Header?: HeaderOverrideBlock;
-  SubHeader?: SubHeaderOverrideBlock;
-  SubSubHeader?: SubSubHeaderOverrideBlock;
-  NumberedList?: NumberedListOverrideBlock;
-  Quote?: QuoteOverrideBlock;
-  Table?: TableOverrideBlock;
-  TableOfContents?: TableOfContentsOverrideBlock;
-  TableRow?: TableRowOverrideBlock;
-  Text?: TextOverrideBlock;
-  ToDo?: TodoOverrideBlock;
-  Toggle?: ToggleOverrideBlock;
-  TransclusionContainer?: TransclusionContainerOverrideBlock;
-  TransclusionReference?: TransclusionReferenceOverrideBlock;
-  Injection?: InjectionOverrideBlock;
+    Alias?: AliasOverrideBlock;
+    Asset?: AssetOverrideBlock;
+    Audio?: AudioOverrideBlock;
+    Bookmark?: BookmarkOverrideBlock;
+    BulletedList?: BulletedListOverrideBlock;
+    Callout?: CalloutOverrideBlock;
+    Code?: CodeOverrideBlock;
+    Column?: ColumnOverrideBlock;
+    ColumnList?: ColumnListOverrideBlock;
+    Divider?: DividerOverrideBlock;
+    Drive?: DriveOverrideBlock;
+    Embed?: EmbedOverrideBlock;
+    EOI?: EOIOverrideBlock;
+    Equation?: EquationOverrideBlock;
+    File?: FileOverrideBlock;
+    Header?: HeaderOverrideBlock;
+    SubHeader?: SubHeaderOverrideBlock;
+    SubSubHeader?: SubSubHeaderOverrideBlock;
+    NumberedList?: NumberedListOverrideBlock;
+    Quote?: QuoteOverrideBlock;
+    Table?: TableOverrideBlock;
+    TableOfContents?: TableOfContentsOverrideBlock;
+    TableRow?: TableRowOverrideBlock;
+    Text?: TextOverrideBlock;
+    ToDo?: TodoOverrideBlock;
+    Toggle?: ToggleOverrideBlock;
+    TransclusionContainer?: TransclusionContainerOverrideBlock;
+    TransclusionReference?: TransclusionReferenceOverrideBlock;
+    Injection?: InjectionOverrideBlock;
 };

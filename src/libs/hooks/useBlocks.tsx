@@ -1,13 +1,13 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
-import { useRendererContext } from "./useRendererContext";
+import { useRendererContext } from './useRendererContext';
 
 export function useBlocks() {
-  const { page } = useRendererContext();
-  const blocks = useMemo(() => Object.values(page.blockMap), [page.blockMap]);
+    const { page } = useRendererContext();
+    const blocks = useMemo(() => Object.values(page.blockMap), [page.blockMap]);
 
-  return {
-    blocks,
-    blockMap: page.blockMap,
-  };
+    return {
+        blocks,
+        blockMap: page.blockMap,
+    };
 }

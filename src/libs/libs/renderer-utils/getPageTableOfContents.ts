@@ -1,18 +1,18 @@
-import { BlockType, ID, PageMap, PageBlock } from "@/types";
+import { BlockType, ID, PageMap, PageBlock } from '@/types';
 
-import { getTextContent } from ".";
+import { getTextContent } from '.';
 
 export interface TableOfContentsEntry {
-  id: ID;
-  type: BlockType;
-  text: string;
-  indentLevel: number;
+    id: ID;
+    type: BlockType;
+    text: string;
+    indentLevel: number;
 }
 
 const indentLevels = {
-  header: 0,
-  sub_header: 1,
-  sub_sub_header: 2,
+    header: 0,
+    sub_header: 1,
+    sub_sub_header: 2,
 };
 
 /**
@@ -20,68 +20,68 @@ const indentLevels = {
  * H1, H2, and H3 elements.
  */
 export const getPageTableOfContents = (
-  pageBlock: PageBlock,
-  page: PageMap
+    pageBlock: PageBlock,
+    page: PageMap
 ): Array<TableOfContentsEntry> => {
-  const toc = (pageBlock.content ?? [])
-    .map((blockId: string) => {
-      const block = page.blockMap[blockId]?.value;
+    const toc = (pageBlock.content ?? [])
+        .map((blockId: string) => {
+            const block = page.blockMap[blockId]?.value;
 
-      if (block) {
-        const { type } = block;
+            if (block) {
+                const { type } = block;
 
-        if (
-          type === "header" ||
-          type === "sub_header" ||
-          type === "sub_sub_header"
-        ) {
-          return {
-            id: blockId,
-            type,
-            text: getTextContent(block.properties?.title),
-            indentLevel: indentLevels[type],
-          };
-        }
-      }
+                if (
+                    type === 'header' ||
+                    type === 'sub_header' ||
+                    type === 'sub_sub_header'
+                ) {
+                    return {
+                        id: blockId,
+                        type,
+                        text: getTextContent(block.properties?.title),
+                        indentLevel: indentLevels[type],
+                    };
+                }
+            }
 
-      return null;
-    })
-    .filter(Boolean) as Array<TableOfContentsEntry>;
+            return null;
+        })
+        .filter(Boolean) as Array<TableOfContentsEntry>;
 
-  const indentLevelStack = [
-    {
-      actual: -1,
-      effective: -1,
-    },
-  ];
+    const indentLevelStack = [
+        {
+            actual: -1,
+            effective: -1,
+        },
+    ];
 
-  // Adjust indent levels to always change smoothly.
-  // This is a little tricky, but the key is that when increasing indent levels,
-  // they should never jump more than one at a time.
-  for (const tocItem of toc) {
-    const { indentLevel } = tocItem;
-    const actual = indentLevel;
+    // Adjust indent levels to always change smoothly.
+    // This is a little tricky, but the key is that when increasing indent levels,
+    // they should never jump more than one at a time.
+    for (const tocItem of toc) {
+        const { indentLevel } = tocItem;
+        const actual = indentLevel;
 
-    do {
-      const prevIndent = indentLevelStack[indentLevelStack.length - 1];
-      const { actual: prevActual, effective: prevEffective } = prevIndent;
+        do {
+            const prevIndent = indentLevelStack[indentLevelStack.length - 1];
+            const { actual: prevActual, effective: prevEffective } = prevIndent;
 
-      if (actual > prevActual) {
-        tocItem.indentLevel = prevEffective + 1;
-        indentLevelStack.push({
-          actual,
-          effective: tocItem.indentLevel,
-        });
-      } else if (actual === prevActual) {
-        tocItem.indentLevel = prevEffective;
-        break;
-      } else {
-        indentLevelStack.pop();
-      }
+            if (actual > prevActual) {
+                tocItem.indentLevel = prevEffective + 1;
+                indentLevelStack.push({
+                    actual,
+                    effective: tocItem.indentLevel,
+                });
+            } else if (actual === prevActual) {
+                tocItem.indentLevel = prevEffective;
+                break;
+            } else {
+                indentLevelStack.pop();
+            }
 
-      // eslint-disable-next-line no-constant-condition
-    } while (true);
-  }
+            // eslint-disable-next-line no-constant-condition
+        } while (true);
+    }
 
-  return toc;
+    return toc;
 };

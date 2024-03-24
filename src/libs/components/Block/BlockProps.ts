@@ -1,12 +1,12 @@
-import { Block } from "@/types";
+import { Block } from '@/types';
 
-export interface BlockProps {
-  block: Block;
-  level: number;
+export interface BlockProps<B extends Block = Block> {
+    block: B;
+    level: number;
 
-  className?: string;
-  bodyClassName?: string;
-  hideBlockId?: boolean;
+    className?: string;
+    bodyClassName?: string;
+    hideBlockId?: boolean;
 
-  children?: React.ReactNode;
+    children?: React.ReactNode;
 }

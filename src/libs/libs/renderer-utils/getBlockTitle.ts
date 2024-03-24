@@ -1,10 +1,10 @@
-import { Block } from "@/types";
+import { Block } from '@/types';
 
-import { getTextContent } from "./getTextContent";
+import { getTextContent } from './getTextContent';
 
 export function getBlockTitle(block: Block) {
-  if (block.properties?.title) {
-    return getTextContent(block.properties.title);
-  }
-  return "";
+    if (block.properties?.title) {
+        return getTextContent(block.properties.title);
+    }
+    return '';
 }

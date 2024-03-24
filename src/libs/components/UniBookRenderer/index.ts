@@ -1,2 +1,2 @@
-export { UniBookRenderer } from "./Renderer";
-export type { UniBookRendererProps } from "./RendererProps";
+export { UniBookRenderer } from './Renderer';
+export type { UniBookRendererProps } from './RendererProps';
