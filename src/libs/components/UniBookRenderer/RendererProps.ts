@@ -13,4 +13,6 @@ export type UniBookRendererProps = {
   blockId?: string;
   hideBlockId?: boolean;
   isImageZoomAble?: boolean;
+
+  maxWidth?: string;
 };

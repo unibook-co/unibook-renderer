@@ -8,7 +8,7 @@ function NotFullPageBlock(props: BlockProps) {
 
   const { block, children, className, bodyClassName, hideBlockId } = props;
 
-  const { page_full_width, page_small_text } = block.format || {};
+  const { page_small_text } = block.format || {};
 
   const blockId = hideBlockId ? "notion-block" : `notion-block-${block.id}`;
 
@@ -18,7 +18,6 @@ function NotFullPageBlock(props: BlockProps) {
         "notion",
         darkMode ? "dark-mode" : "light-mode",
         "notion-page",
-        page_full_width && "notion-full-width",
         page_small_text && "notion-small-text",
         blockId,
         className,

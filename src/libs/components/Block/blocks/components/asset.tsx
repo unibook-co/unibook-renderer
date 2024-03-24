@@ -39,17 +39,12 @@ export const Asset: React.FC<{
       block_aspect_ratio,
       block_height,
       block_width,
-      block_full_width,
       block_page_width,
       block_preserve_scale,
     } = block.format;
 
-    if (block_full_width || block_page_width) {
-      if (block_full_width) {
-        style.width = "100vw";
-      } else {
-        style.width = "100%";
-      }
+    if (block_page_width) {
+      style.width = "100%";
 
       if (block.type === "video") {
         if (block_height) {

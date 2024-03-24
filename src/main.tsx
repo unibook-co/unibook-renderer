@@ -1,15 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./style.css";
+import "katex/dist/katex.min.css";
 import "./libs/styles/styles.css";
+import "./style.css";
 
-import { UniBookRenderer } from "./libs";
+import { UniBookRenderer, Code, Equation } from "./libs";
 import { pageExample } from "./page";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <>
-      <UniBookRenderer page={pageExample} />
+      <div className="m-auto w-fit">
+        <UniBookRenderer
+          page={pageExample}
+          components={{
+            Code,
+            Equation,
+          }}
+        />
+      </div>
     </>
   </React.StrictMode>
 );
