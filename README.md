@@ -37,36 +37,9 @@ function ExamplePage() {
 ## Style
 
 ```tsx
-// Required
 import 'unibook-renderer/styles/styles.css'
-
-// Optional (Required for Code component)
 import 'prismjs/themes/prism.css'
-
-// Optional (Required for Equation component)
 import 'katex/dist/katex.min.css'
-```
-
-## Optional Components
-
-```tsx
-import { Code } from 'unibook-renderer/plugin/code'
-import { Equation } from 'unibook-renderer/plugin/equation'
-import { UniBookRenderer, Page } from "unibook-renderer";
-
-function ExamplePage() {
-  const page: Page = ...
-
-  return (
-    <UniBookRenderer
-      page={page}
-      components={{
-        Code,
-        Equation,
-      }}
-    />
-  )
-}
 ```
 
 ## Block Overriding

@@ -1,5 +1,6 @@
 import { defaultMapImageUrl } from '@/libs/renderer-utils/mapImageUrl';
 import { defaultMapPageUrl } from '@/libs/renderer-utils/mapPageUrl';
+import { Code, Equation } from '@/plugins';
 import { RendererComponents } from '@/types';
 
 import { DefaultLink } from './components/link.component';
@@ -20,8 +21,8 @@ export const defaultRendererComponents: RendererComponents = {
     Link: DefaultLink,
     PageLink: DefaultPageLink,
 
-    Code: dummyComponent('Code'),
-    Equation: dummyComponent('Equation'),
+    Code: Code,
+    Equation: Equation,
     PDF: dummyComponent('PDF'),
 };
 

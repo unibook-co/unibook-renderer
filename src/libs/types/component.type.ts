@@ -3,7 +3,7 @@ import { ComponentPropsWithRef, ReactNode } from 'react';
 
 import { CodeBlock } from '.';
 
-export type CodeComponentProps = ComponentPropsWithRef<'code'> & {
+export type CodeComponentProps = ComponentPropsWithRef<'div'> & {
     block: CodeBlock;
     defaultLanguage?: string;
     className?: string;
