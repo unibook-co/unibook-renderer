@@ -22,8 +22,11 @@ yarn add unibook-renderer
 ## Usage
 
 ```tsx
-import 'unibook-renderer/styles/styles.css'
 import { UniBookRenderer, Page } from "unibook-renderer";
+
+import 'unibook-renderer/dist/style.css'
+import 'prismjs/themes/prism.css'
+import 'katex/dist/katex.min.css'
 
 function ExamplePage() {
   const page: Page = ...
@@ -34,12 +37,21 @@ function ExamplePage() {
 }
 ```
 
-## Style
+### From Notion RecordMap
+
+> Warning: UniBook Renderer는 현재 Notion과 거의 동일한 타입을 사용하나, 추후 변경될 가능성이 높습니다.
 
 ```tsx
-import 'unibook-renderer/styles/styles.css'
-import 'prismjs/themes/prism.css'
-import 'katex/dist/katex.min.css'
+function ExamplePage() {
+  const recordMap: { ... }
+
+  return (
+    <UniBookRenderer page={{
+      ...recordMap,
+      blockMap: recordMap.block,
+    }} />
+  )
+}
 ```
 
 ## Block Overriding
@@ -77,3 +89,8 @@ function ExamplePage() {
   )
 }
 ```
+
+## Related
+
+* [react-notion-x](https://github.com/NotionX/react-notion-x) - React renderer for notion
+  * `unibook-renderer` 는 `react-notion-x` 코드를 기반으로 collection를 제거하고, 페이지에서 확장성 높은 기능을 구현했습니다.
