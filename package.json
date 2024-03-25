@@ -1,7 +1,7 @@
 {
     "name": "unibook-renderer",
     "private": false,
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "UniBook Page Renderer",
     "repository": "https://github.com/HyunsDev/unibook-renderer",
     "type": "module",
