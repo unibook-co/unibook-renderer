@@ -57,7 +57,7 @@ export const RichText = ({ value, linkProps, linkProtocol }: RichTextProps) => {
 
                                 return (
                                     <components.PageLink
-                                        className="notion-link"
+                                        className="unibook-link"
                                         href={mapPageUrl(blockId)}
                                     >
                                         <PageTitle block={linkedBlock} />
@@ -83,7 +83,7 @@ export const RichText = ({ value, linkProps, linkProtocol }: RichTextProps) => {
 
                                 return (
                                     <components.PageLink
-                                        className="notion-link"
+                                        className="unibook-link"
                                         href={mapPageUrl(id)}
                                         {...linkProps}
                                         target="_blank"
@@ -96,14 +96,14 @@ export const RichText = ({ value, linkProps, linkProtocol }: RichTextProps) => {
 
                             case 'h':
                                 return (
-                                    <span className={`notion-${decorator[1]}`}>
+                                    <span className={`unibook-${decorator[1]}`}>
                                         {element}
                                     </span>
                                 );
 
                             case 'c':
                                 return (
-                                    <code className="notion-inline-code">
+                                    <code className="unibook-inline-code">
                                         {element}
                                     </code>
                                 );
@@ -119,7 +119,7 @@ export const RichText = ({ value, linkProps, linkProtocol }: RichTextProps) => {
 
                             case '_':
                                 return (
-                                    <span className="notion-inline-underscore">
+                                    <span className="unibook-inline-underscore">
                                         {element}
                                     </span>
                                 );
@@ -150,7 +150,7 @@ export const RichText = ({ value, linkProps, linkProtocol }: RichTextProps) => {
 
                                     return (
                                         <components.PageLink
-                                            className="notion-link"
+                                            className="unibook-link"
                                             href={href}
                                             {...linkProps}
                                         >
@@ -160,7 +160,7 @@ export const RichText = ({ value, linkProps, linkProtocol }: RichTextProps) => {
                                 } else {
                                     return (
                                         <components.Link
-                                            className="notion-link"
+                                            className="unibook-link"
                                             href={
                                                 linkProtocol
                                                     ? `${linkProtocol}:${decorator[1]}`

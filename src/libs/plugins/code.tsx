@@ -77,18 +77,18 @@ export const Code = forwardRef<HTMLDivElement, CodeProps>(
         }, [content, copyTimeout]);
 
         return (
-            <div ref={ref} className="notion-code-wrapper">
-                <pre className={cs('notion-code', className)}>
+            <div ref={ref} className="unibook-code-wrapper">
+                <pre className={cs('unibook-code', className)}>
                     <div
                         style={{
                             height: '22px',
                         }}
                     />
-                    <div className="notion-code-header">
-                        <div className="notion-code-language">{language}</div>
-                        <div className="notion-code-action">
+                    <div className="unibook-code-header">
+                        <div className="unibook-code-language">{language}</div>
+                        <div className="unibook-code-action">
                             <div
-                                className="notion-code-action-item"
+                                className="unibook-code-action-item"
                                 onClick={onClickCopyToClipboard}
                             >
                                 <CopyIcon
@@ -107,7 +107,7 @@ export const Code = forwardRef<HTMLDivElement, CodeProps>(
                 </pre>
 
                 {caption && (
-                    <figcaption className="notion-asset-caption">
+                    <figcaption className="unibook-asset-caption">
                         <RichText value={caption} block={block} />
                     </figcaption>
                 )}

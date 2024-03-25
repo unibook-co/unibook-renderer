@@ -24,8 +24,10 @@ export const Equation = forwardRef<HTMLSpanElement, EquationProps>(
             <span
                 tabIndex={0}
                 className={cs(
-                    'notion-equation',
-                    inline ? 'notion-equation-inline' : 'notion-equation-block',
+                    'unibook-equation',
+                    inline
+                        ? 'unibook-equation-inline'
+                        : 'unibook-equation-block',
                     className
                 )}
                 {...rest}

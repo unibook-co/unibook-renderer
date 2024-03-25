@@ -96,21 +96,21 @@ export const LiteYouTubeEmbed: React.FC<{
                 onClick={onLoadIframe}
                 onPointerOver={warmConnections}
                 className={cs(
-                    'notion-yt-lite',
-                    isIframeLoaded && 'notion-yt-loaded',
-                    iframeInitialized && 'notion-yt-initialized',
+                    'unibook-yt-lite',
+                    isIframeLoaded && 'unibook-yt-loaded',
+                    iframeInitialized && 'unibook-yt-initialized',
                     className
                 )}
                 style={style}
             >
                 <img
                     src={posterUrl}
-                    className="notion-yt-thumbnail"
+                    className="unibook-yt-thumbnail"
                     loading={lazyImage ? 'lazy' : undefined}
                     alt={alt}
                 />
 
-                <div className="notion-yt-playbtn" />
+                <div className="unibook-yt-playbtn" />
 
                 {iframeInitialized && (
                     <iframe

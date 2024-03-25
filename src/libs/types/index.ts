@@ -3,3 +3,4 @@ export * from './block.type';
 export * from './page.type';
 export * from './component.type';
 export * from './override.type';
+export * from './blockProps.type';

@@ -1,22 +1,17 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs, getTextContent } from '@/libs/renderer-utils';
+import { BookmarkBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 import { LazyImage } from './components/lazyImage';
 import { RichText } from './components/richText';
 
-export function BookmarkBlock(props: BlockProps) {
-    const ref = useRef<HTMLDivElement>(null);
+export function BookmarkBlock(props: BookmarkBlockProps) {
     const ctx = useRendererContext();
     const { components, mapImageUrl, overrideBlocks } = ctx;
 
-    const { block, hideBlockId } = props;
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
+    const { block } = props;
 
     if (!block.properties) return null;
 
@@ -40,36 +35,27 @@ export function BookmarkBlock(props: BlockProps) {
     }
 
     return (
-        <OverrideBlockDecorator
-            Block={overrideBlocks.Bookmark}
-            props={props}
-            blockRef={ref}
-        >
-            <div
-                data-block-id={props.block.id}
-                className="notion-row"
-                ref={ref}
-            >
+        <OverrideBlockDecorator Block={overrideBlocks.Bookmark} props={props}>
+            <div data-block-id={props.block.id} className="unibook-row">
                 <components.Link
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cs(
-                        'notion-bookmark',
+                        'unibook-bookmark',
                         block.format?.block_color &&
-                            `notion-${block.format.block_color}`,
-                        blockId
+                            `unibook-${block.format.block_color}`
                     )}
                     href={link[0][0]}
                 >
                     <div>
                         {title && (
-                            <div className="notion-bookmark-title">
+                            <div className="unibook-bookmark-title">
                                 <RichText value={[[title]]} block={block} />
                             </div>
                         )}
 
                         {block.properties?.description && (
-                            <div className="notion-bookmark-description">
+                            <div className="unibook-bookmark-description">
                                 <RichText
                                     value={block.properties?.description}
                                     block={block}
@@ -77,9 +63,9 @@ export function BookmarkBlock(props: BlockProps) {
                             </div>
                         )}
 
-                        <div className="notion-bookmark-link">
+                        <div className="unibook-bookmark-link">
                             {block.format?.bookmark_icon && (
-                                <div className="notion-bookmark-link-icon">
+                                <div className="unibook-bookmark-link-icon">
                                     <LazyImage
                                         src={mapImageUrl(
                                             block.format?.bookmark_icon,
@@ -90,14 +76,14 @@ export function BookmarkBlock(props: BlockProps) {
                                 </div>
                             )}
 
-                            <div className="notion-bookmark-link-text">
+                            <div className="unibook-bookmark-link-text">
                                 <RichText value={link} block={block} />
                             </div>
                         </div>
                     </div>
 
                     {block.format?.bookmark_cover && (
-                        <div className="notion-bookmark-image">
+                        <div className="unibook-bookmark-image">
                             <LazyImage
                                 src={mapImageUrl(
                                     block.format?.bookmark_cover,

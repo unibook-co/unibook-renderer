@@ -17,14 +17,14 @@ export const PageTitleImpl: React.FC<{
     }
 
     return (
-        <span className={cs('notion-page-title', className)} {...rest}>
+        <span className={cs('unibook-page-title', className)} {...rest}>
             <PageIcon
                 block={block}
                 defaultIcon={defaultIcon}
-                className="notion-page-title-icon"
+                className="unibook-page-title-icon"
             />
 
-            <span className="notion-page-title-text">
+            <span className="unibook-page-title-text">
                 <RichText value={block.properties?.title} block={block} />
             </span>
         </span>

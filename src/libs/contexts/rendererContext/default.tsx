@@ -9,7 +9,7 @@ import { RendererContextValue } from '.';
 
 const dummyComponent = (name: string) => () => {
     console.warn(
-        `Warning: using empty component "${name}" (you should override this in NotionRenderer.components)`
+        `Warning: using empty component "${name}" (you should override this in unibookRenderer.components)`
     );
 
     return null;

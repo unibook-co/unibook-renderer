@@ -3,8 +3,8 @@ import { useRef } from 'react';
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs, getBlockParentPage } from '@/libs/renderer-utils';
 import { getPageTableOfContents } from '@/libs/renderer-utils/getPageTableOfContents';
+import { SubSubHeaderBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 import { RichText } from './components/richText';
@@ -13,18 +13,16 @@ const tocIndentLevelCache: {
     [blockId: string]: number;
 } = {};
 
-export function SubSubHeaderBlock(props: BlockProps) {
+export function SubSubHeaderBlock(props: SubSubHeaderBlockProps) {
     const ref = useRef<HTMLHeadingElement>(null);
     const ctx = useRendererContext();
     const { page, overrideBlocks } = ctx;
 
-    const { block, hideBlockId } = props;
+    const { block } = props;
 
     if (!block) {
         return null;
     }
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
 
     if (!block.properties) return null;
 
@@ -50,20 +48,19 @@ export function SubSubHeaderBlock(props: BlockProps) {
     }
 
     if (indentLevel !== undefined) {
-        indentLevelClass = `notion-h-indent-${indentLevel}`;
+        indentLevelClass = `unibook-h-indent-${indentLevel}`;
     }
 
     const classNameStr = cs(
-        'notion-h notion-h3',
-        blockColor && `notion-${blockColor}`,
-        indentLevelClass,
-        blockId
+        'unibook-h unibook-h3',
+        blockColor && `unibook-${blockColor}`,
+        indentLevelClass
     );
 
     const innerHeader = (
         <span>
-            <div id={id} className="notion-header-anchor" />
-            <span className="notion-h-title">
+            <div id={id} className="unibook-header-anchor" />
+            <span className="unibook-h-title">
                 <RichText value={block.properties.title} block={block} />
             </span>
         </span>
@@ -72,7 +69,6 @@ export function SubSubHeaderBlock(props: BlockProps) {
 
     headerBlock = (
         <OverrideBlockDecorator
-            blockRef={ref}
             props={props}
             Block={overrideBlocks.SubSubHeader}
         >

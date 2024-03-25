@@ -1,27 +1,24 @@
 import { useRendererContext } from '@/hooks/useRendererContext';
+import { Block } from '@/types';
 import { OverrideBlock } from '@/types/override.type';
 
-import { BlockProps } from './BlockProps';
+import { BaseBlockProps } from '../../types/blockProps.type';
 
-export function OverrideBlockDecorator<
-    T extends HTMLElement | undefined = HTMLDivElement,
->({
+export function OverrideBlockDecorator<B extends Block>({
     children,
     props: props,
-    blockRef,
     Block: Block,
 }: {
     children: React.ReactNode;
-    props: BlockProps;
-    blockRef: T extends HTMLElement ? React.RefObject<T> : undefined;
-    Block?: OverrideBlock<T>;
+    props: BaseBlockProps<B>;
+    Block?: OverrideBlock<B>;
 }) {
     const context = useRendererContext();
     if (!Block) {
         return <>{children}</>;
     }
     return (
-        <Block blockProps={props} blockRef={blockRef} blockContext={context}>
+        <Block blockProps={props} blockContext={context}>
             {children}
         </Block>
     );

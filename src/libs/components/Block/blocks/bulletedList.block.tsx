@@ -1,27 +1,20 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs } from '@/libs/renderer-utils';
+import { BulletedListBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 import { RichText } from './components/richText';
 
 // bulleted_list
-export function BulletedListBlock(props: BlockProps) {
-    const ref = useRef<HTMLLIElement>(null);
+export function BulletedListBlock(props: BulletedListBlockProps) {
     const ctx = useRendererContext();
     const { page, overrideBlocks } = ctx;
 
-    const { block, children, hideBlockId } = props;
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
+    const { block, children } = props;
 
     const wrapList = (content: React.ReactNode) => (
-        <ul className={cs('notion-list', 'notion-list-disc', blockId)}>
-            {content}
-        </ul>
+        <ul className={cs('unibook-list', 'unibook-list-disc')}>{content}</ul>
     );
 
     let output: JSX.Element | null = null;
@@ -31,11 +24,10 @@ export function BulletedListBlock(props: BlockProps) {
             <>
                 {block.properties && (
                     <OverrideBlockDecorator
-                        blockRef={ref}
                         props={props}
                         Block={overrideBlocks.BulletedList}
                     >
-                        <li ref={ref}>
+                        <li>
                             <RichText
                                 value={block.properties.title}
                                 block={block}
@@ -49,11 +41,10 @@ export function BulletedListBlock(props: BlockProps) {
     } else {
         output = block.properties ? (
             <OverrideBlockDecorator
-                blockRef={ref}
                 props={props}
                 Block={overrideBlocks.BulletedList}
             >
-                <li ref={ref} data-block-id={props.block.id}>
+                <li data-block-id={props.block.id}>
                     <RichText value={block.properties.title} block={block} />
                 </li>
             </OverrideBlockDecorator>

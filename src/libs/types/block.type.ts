@@ -34,8 +34,6 @@ export type BlockType =
     | 'table_row'
     | 'breadcrumb';
 
-export type Block = BaseBlock;
-
 export interface BaseBlock {
     id: ID;
     type: BlockType;
@@ -203,9 +201,6 @@ export interface EmbedBlock extends BaseContentBlock {
 export interface VideoBlock extends BaseContentBlock {
     type: 'video';
 }
-export interface PdfBlock extends BaseContentBlock {
-    type: 'pdf';
-}
 export interface AudioBlock extends BaseContentBlock {
     type: 'audio';
 }
@@ -242,7 +237,7 @@ export interface SyncPointerBlock extends BaseBlock {
         };
     };
 }
-export interface PageLink extends BaseBlock {
+export interface PageLinkBlock extends BaseBlock {
     type: 'alias';
     format: {
         alias_pointer: {
@@ -276,6 +271,38 @@ export interface TableRowBlock extends BaseBlock {
         [column: string]: Decoration[];
     };
 }
-export interface BreadcrumbInstance extends BaseBlock {
+export interface BreadcrumbBlock extends BaseBlock {
     type: 'breadcrumb';
 }
+
+export type Block =
+    | BaseBlock
+    | PageBlock
+    | BookmarkBlock
+    | TextBlock
+    | BulletedListBlock
+    | NumberedListBlock
+    | HeaderBlock
+    | SubHeaderBlock
+    | SubSubHeaderBlock
+    | QuoteBlock
+    | EquationBlock
+    | TodoBlock
+    | TableOfContentsBlock
+    | DividerBlock
+    | ColumnListBlock
+    | ColumnBlock
+    | CalloutBlock
+    | ToggleBlock
+    | ImageBlock
+    | EmbedBlock
+    | VideoBlock
+    | AudioBlock
+    | FileBlock
+    | CodeBlock
+    | SyncBlock
+    | SyncPointerBlock
+    | PageLinkBlock
+    | TableBlock
+    | TableRowBlock
+    | BreadcrumbBlock;

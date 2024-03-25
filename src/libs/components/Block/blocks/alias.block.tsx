@@ -1,17 +1,14 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs } from '@/libs/renderer-utils';
+import { PageLinkBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 import { PageTitle } from './components/pageTitle';
 
-export function AliasBlock(props: BlockProps) {
-    const ref = useRef<HTMLAnchorElement>(null);
-    const ctx = useRendererContext();
-    const { components, overrideBlocks, page, mapPageUrl } = ctx;
+export function AliasBlock(props: PageLinkBlockProps) {
+    const { components, overrideBlocks, page, mapPageUrl } =
+        useRendererContext();
     const { block } = props;
 
     const blockPointerId = block?.format?.alias_pointer?.id;
@@ -22,16 +19,10 @@ export function AliasBlock(props: BlockProps) {
     }
 
     return (
-        <OverrideBlockDecorator
-            blockRef={ref}
-            props={props}
-            Block={overrideBlocks.Alias}
-        >
+        <OverrideBlockDecorator props={props} Block={overrideBlocks.Alias}>
             <components.PageLink
-                data-block-id={props.block.id}
-                className={cs('notion-page-link', blockPointerId)}
+                className={cs('unibook-page-link')}
                 href={mapPageUrl(blockPointerId)}
-                ref={ref}
             >
                 <PageTitle block={linkedBlock} />
             </components.PageLink>

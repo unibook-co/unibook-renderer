@@ -1,27 +1,22 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
+import { NumberedListBlockProps } from '@/types';
 import { cs } from '@/utils/cn';
 import { getListNumber } from '@/utils/getListNumber';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 import { RichText } from './components/richText';
 
-export function NumberedListBlock(props: BlockProps) {
-    const ref = useRef<HTMLLIElement>(null);
+export function NumberedListBlock(props: NumberedListBlockProps) {
     const ctx = useRendererContext();
     const { page, overrideBlocks } = ctx;
 
-    const { block, children, hideBlockId } = props;
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
+    const { block, children } = props;
 
     const wrapList = (content: React.ReactNode, start?: number) => (
         <ol
             start={start}
-            className={cs('notion-list', 'notion-list-numbered', blockId)}
+            className={cs('unibook-list', 'unibook-list-numbered')}
         >
             {content}
         </ol>
@@ -34,11 +29,10 @@ export function NumberedListBlock(props: BlockProps) {
             <>
                 {block.properties && (
                     <OverrideBlockDecorator
-                        blockRef={ref}
                         props={props}
                         Block={overrideBlocks.NumberedList}
                     >
-                        <li ref={ref}>
+                        <li>
                             <RichText
                                 value={block.properties.title}
                                 block={block}
@@ -52,11 +46,10 @@ export function NumberedListBlock(props: BlockProps) {
     } else {
         output = block.properties ? (
             <OverrideBlockDecorator
-                blockRef={ref}
                 props={props}
                 Block={overrideBlocks.NumberedList}
             >
-                <li ref={ref}>
+                <li>
                     <RichText value={block.properties.title} block={block} />
                 </li>
             </OverrideBlockDecorator>

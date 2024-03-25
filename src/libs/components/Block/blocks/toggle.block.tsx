@@ -1,29 +1,19 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs } from '@/libs/renderer-utils';
+import { ToggleBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 import { RichText } from './components/richText';
 
-export function ToggleBlock(props: BlockProps) {
-    const ref = useRef<HTMLDetailsElement>(null);
+export function ToggleBlock(props: ToggleBlockProps) {
     const { overrideBlocks } = useRendererContext();
-    const { block, children, hideBlockId } = props;
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
+    const { block, children } = props;
 
     return (
-        <OverrideBlockDecorator
-            blockRef={ref}
-            props={props}
-            Block={overrideBlocks.Toggle}
-        >
+        <OverrideBlockDecorator props={props} Block={overrideBlocks.Toggle}>
             <details
-                className={cs('notion-toggle', blockId)}
-                ref={ref}
+                className={cs('unibook-toggle')}
                 data-block-id={props.block.id}
             >
                 <summary>

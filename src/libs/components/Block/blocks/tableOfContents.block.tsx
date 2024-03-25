@@ -3,16 +3,14 @@ import { useRef } from 'react';
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs, getBlockParentPage } from '@/libs/renderer-utils';
 import { getPageTableOfContents } from '@/libs/renderer-utils/getPageTableOfContents';
+import { TableOfContentsBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
-export function TableOfContentsBlock(props: BlockProps) {
+export function TableOfContentsBlock(props: TableOfContentsBlockProps) {
     const ref = useRef<HTMLDivElement>(null);
     const { page, overrideBlocks } = useRendererContext();
-    const { block, hideBlockId } = props;
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
+    const { block } = props;
 
     const pageBlock = getBlockParentPage(block, page);
     if (!pageBlock) return null;
@@ -22,15 +20,13 @@ export function TableOfContentsBlock(props: BlockProps) {
 
     return (
         <OverrideBlockDecorator
-            blockRef={ref}
             props={props}
             Block={overrideBlocks.TableOfContents}
         >
             <div
                 className={cs(
-                    'notion-table-of-contents',
-                    blockColor && `notion-${blockColor}`,
-                    blockId
+                    'unibook-table-of-contents',
+                    blockColor && `unibook-${blockColor}`
                 )}
                 data-block-id={props.block.id}
                 ref={ref}
@@ -39,10 +35,10 @@ export function TableOfContentsBlock(props: BlockProps) {
                     <a
                         key={tocItem.id}
                         href={`#${tocItem.id}`}
-                        className="notion-table-of-contents-item"
+                        className="unibook-table-of-contents-item"
                     >
                         <span
-                            className="notion-table-of-contents-item-body"
+                            className="unibook-table-of-contents-item-body"
                             style={{
                                 display: 'inline-block',
                                 marginLeft: tocItem.indentLevel * 24,

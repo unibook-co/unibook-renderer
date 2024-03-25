@@ -43,7 +43,7 @@ export const PageIconImpl: React.FC<{
                 <LazyImage
                     src={url}
                     alt={title || 'page icon'}
-                    className={cs(className, 'notion-page-icon')}
+                    className={cs(className, 'unibook-page-icon')}
                 />
             );
         } else if (icon && icon.startsWith('/icons/')) {
@@ -57,7 +57,7 @@ export const PageIconImpl: React.FC<{
                 <LazyImage
                     src={url}
                     alt={title || 'page icon'}
-                    className={cs(className, 'notion-page-icon')}
+                    className={cs(className, 'unibook-page-icon')}
                 />
             );
         } else if (!icon) {
@@ -65,7 +65,7 @@ export const PageIconImpl: React.FC<{
                 isImage = true;
                 content = (
                     <DefaultPageIcon
-                        className={cs(className, 'notion-page-icon')}
+                        className={cs(className, 'unibook-page-icon')}
                         alt={title ? title : 'page icon'}
                     />
                 );
@@ -74,7 +74,7 @@ export const PageIconImpl: React.FC<{
             isImage = false;
             content = (
                 <span
-                    className={cs(className, 'notion-page-icon')}
+                    className={cs(className, 'unibook-page-icon')}
                     role="img"
                     aria-label={icon}
                 >
@@ -91,8 +91,8 @@ export const PageIconImpl: React.FC<{
     return (
         <div
             className={cs(
-                inline ? 'notion-page-icon-inline' : 'notion-page-icon-hero',
-                isImage ? 'notion-page-icon-image' : 'notion-page-icon-span'
+                inline ? 'unibook-page-icon-inline' : 'unibook-page-icon-hero',
+                isImage ? 'unibook-page-icon-image' : 'unibook-page-icon-span'
             )}
         >
             {content}

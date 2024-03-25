@@ -1,17 +1,16 @@
 import { useRendererContext } from '@/hooks/useRendererContext';
+import { SyncPointerBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 import { SyncPointerBlock } from './components/syncPointerBlock';
 
-export function TransclusionReferenceBlock(props: BlockProps) {
+export function TransclusionReferenceBlock(props: SyncPointerBlockProps) {
     const { overrideBlocks } = useRendererContext();
     const { level } = props;
 
     return (
         <OverrideBlockDecorator
-            blockRef={undefined}
             props={props}
             Block={overrideBlocks.TransclusionReference}
         >

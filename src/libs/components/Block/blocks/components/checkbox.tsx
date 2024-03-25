@@ -4,22 +4,21 @@ import { CheckIcon } from '@/components/icons/CheckIcon';
 
 export const Checkbox: React.FC<{
     isChecked: boolean;
-    blockId: string;
 }> = ({ isChecked }) => {
     let content = null;
 
     if (isChecked) {
         content = (
-            <div className="notion-property-checkbox-checked">
+            <div className="unibook-property-checkbox-checked">
                 <CheckIcon />
             </div>
         );
     } else {
-        content = <div className="notion-property-checkbox-unchecked" />;
+        content = <div className="unibook-property-checkbox-unchecked" />;
     }
 
     return (
-        <span className="notion-property notion-property-checkbox">
+        <span className="unibook-property unibook-property-checkbox">
             {content}
         </span>
     );

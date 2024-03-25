@@ -1,22 +1,16 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs } from '@/libs/renderer-utils';
+import { ColumnBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 // column
-export function ColumnBlock(props: BlockProps) {
-    const ref = useRef<HTMLDivElement>(null);
+export function ColumnBlock(props: ColumnBlockProps) {
     const ctx = useRendererContext();
     const { page, overrideBlocks } = ctx;
 
-    const { block, children, hideBlockId } = props;
+    const { block, children } = props;
 
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
-
-    // note: notion uses 46px
     const spacerWidth = `min(32px, 4vw)`;
     const ratio = block.format?.column_ratio || 0.5;
     const parent = page.blockMap[block.parent_id]?.value;
@@ -27,20 +21,15 @@ export function ColumnBlock(props: BlockProps) {
     const style = { width };
 
     return (
-        <OverrideBlockDecorator
-            blockRef={ref}
-            Block={overrideBlocks.Column}
-            props={props}
-        >
+        <OverrideBlockDecorator Block={overrideBlocks.Column} props={props}>
             <div
                 data-block-id={props.block.id}
-                className={cs('notion-column', blockId)}
+                className={cs('unibook-column')}
                 style={style}
-                ref={ref}
             >
                 {children}
             </div>
-            <div className="notion-spacer" />
+            <div className="unibook-spacer" />
         </OverrideBlockDecorator>
     );
 }

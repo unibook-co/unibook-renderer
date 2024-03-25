@@ -1,26 +1,19 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
+import { CodeBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
-export function InjectionBlock(props: BlockProps) {
-    const ref = useRef<HTMLDivElement>(null);
+export function InjectionBlock(props: CodeBlockProps) {
     const { overrideBlocks } = useRendererContext();
 
     const content = props?.block?.properties?.title
-        .map((title: string[]) => title[0])
+        .map((title) => title[0])
         .join('');
 
     return (
-        <OverrideBlockDecorator
-            blockRef={ref}
-            props={props}
-            Block={overrideBlocks.Injection}
-        >
+        <OverrideBlockDecorator props={props} Block={overrideBlocks.Injection}>
             <div
-                className="notion-injection px-[3px] py-[2px] mx-[1px]"
+                className="unibook-injection px-[3px] py-[2px] mx-[1px]"
                 data-block-id={props.block.id}
                 dangerouslySetInnerHTML={{
                     __html: content,

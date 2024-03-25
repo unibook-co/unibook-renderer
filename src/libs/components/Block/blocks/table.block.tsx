@@ -2,25 +2,19 @@ import { useRef } from 'react';
 
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs } from '@/libs/renderer-utils';
+import { TableBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
-export function TableBlock(props: BlockProps) {
+export function TableBlock(props: TableBlockProps) {
     const ref = useRef<HTMLTableElement>(null);
     const { overrideBlocks } = useRendererContext();
-    const { block, children, hideBlockId } = props;
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
+    const { children } = props;
 
     return (
-        <OverrideBlockDecorator
-            blockRef={ref}
-            props={props}
-            Block={overrideBlocks.Table}
-        >
+        <OverrideBlockDecorator props={props} Block={overrideBlocks.Table}>
             <table
-                className={cs('notion-simple-table', blockId)}
+                className={cs('unibook-simple-table')}
                 ref={ref}
                 data-block-id={props.block.id}
             >

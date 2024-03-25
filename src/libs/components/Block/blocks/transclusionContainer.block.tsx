@@ -1,27 +1,20 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs } from '@/libs/renderer-utils';
+import { SyncBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
-export function TransclusionContainerBlock(props: BlockProps) {
-    const ref = useRef<HTMLDivElement>(null);
+export function TransclusionContainerBlock(props: SyncBlockProps) {
     const { overrideBlocks } = useRendererContext();
-    const { block, children, hideBlockId } = props;
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
+    const { children } = props;
 
     return (
         <OverrideBlockDecorator
-            blockRef={ref}
             props={props}
             Block={overrideBlocks.TransclusionContainer}
         >
             <div
-                className={cs('notion-sync-block', blockId)}
-                ref={ref}
+                className={cs('unibook-sync-block')}
                 data-block-id={props.block.id}
             >
                 {children}

@@ -1,47 +1,36 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs } from '@/libs/renderer-utils';
+import { TextBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 import { RichText } from './components/richText';
 
-export function TextBlock(props: BlockProps) {
-    const ref = useRef<HTMLDivElement>(null);
-    const { block, children, hideBlockId } = props;
+export function TextBlock(props: TextBlockProps) {
+    const { block, children } = props;
     const { overrideBlocks } = useRendererContext();
 
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
-
     if (!block.properties && !block.content?.length) {
-        return <div className={cs('notion-blank', blockId)}>&nbsp;</div>;
+        return <div className={cs('unibook-blank')}>&nbsp;</div>;
     }
 
     const blockColor = block.format?.block_color;
 
     return (
-        <OverrideBlockDecorator
-            Block={overrideBlocks.Text}
-            props={props}
-            blockRef={ref}
-        >
+        <OverrideBlockDecorator Block={overrideBlocks.Text} props={props}>
             <div
                 className={cs(
-                    'notion-text',
-                    blockColor && `notion-${blockColor}`,
-                    blockId
+                    'unibook-text',
+                    blockColor && `unibook-${blockColor}`
                 )}
                 data-block-id={props.block.id}
-                ref={ref}
             >
                 {block.properties?.title && (
                     <RichText value={block.properties.title} block={block} />
                 )}
 
                 {children && (
-                    <div className="notion-text-children">{children}</div>
+                    <div className="unibook-text-children">{children}</div>
                 )}
             </div>
         </OverrideBlockDecorator>

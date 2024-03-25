@@ -7,11 +7,10 @@ import { BaseContentBlock, Block } from '@/types';
 import { getYoutubeId } from '@/utils/getYoutubeId';
 
 import { LazyImage } from './lazyImage';
-import { LiteYouTubeEmbed } from './liteYoutubeEmbed';
 
 const isServer = typeof window === 'undefined';
 
-const supportedAssetTypes = ['video', 'image', 'embed', 'maps', 'pdf', 'drive'];
+const supportedAssetTypes = ['video', 'image', 'embed', 'pdf'];
 
 export const Asset: React.FC<{
     block: BaseContentBlock;
@@ -161,16 +160,19 @@ export const Asset: React.FC<{
 
                 if (youtubeVideoId) {
                     content = (
-                        <LiteYouTubeEmbed
-                            id={youtubeVideoId}
+                        <iframe
+                            className="unibook-asset-object-fit"
                             style={assetStyle}
-                            className="notion-asset-object-fit"
+                            src={`https://www.youtube.com/embed/${youtubeVideoId}`}
+                            title={`iframe ${block.type}`}
+                            allowFullScreen
+                            loading="lazy"
                         />
                     );
                 } else {
                     content = (
                         <iframe
-                            className="notion-asset-object-fit"
+                            className="unibook-asset-object-fit"
                             style={assetStyle}
                             src={src}
                             title={`iframe ${block.type}`}
@@ -189,7 +191,7 @@ export const Asset: React.FC<{
         }
         const src = mapImageUrl(source, block as Block);
         const caption = getTextContent(block.properties?.caption);
-        const alt = caption || 'notion image';
+        const alt = caption || 'unibook image';
 
         content = (
             <LazyImage

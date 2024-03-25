@@ -1,41 +1,30 @@
-import { useRef } from 'react';
-
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs } from '@/libs/renderer-utils';
+import { CalloutBlockProps } from '@/types';
 
-import { BlockProps } from '../BlockProps';
 import { OverrideBlockDecorator } from '../OverrideBlockDecorator';
 
 import { PageIcon } from './components/pageIcon';
 import { RichText } from './components/richText';
 
-export function CalloutBlock(props: BlockProps) {
-    const ref = useRef<HTMLDivElement>(null);
+export function CalloutBlock(props: CalloutBlockProps) {
     const { overrideBlocks } = useRendererContext();
 
-    const { block, children, hideBlockId } = props;
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
+    const { block, children } = props;
 
     return (
-        <OverrideBlockDecorator
-            Block={overrideBlocks.Callout}
-            props={props}
-            blockRef={ref}
-        >
+        <OverrideBlockDecorator Block={overrideBlocks.Callout} props={props}>
             <div
                 className={cs(
-                    'notion-callout',
+                    'unibook-callout',
                     block.format?.block_color &&
-                        `notion-${block.format?.block_color}_co`,
-                    blockId
+                        `unibook-${block.format?.block_color}_co`
                 )}
                 data-block-id={props.block.id}
-                ref={ref}
             >
                 <PageIcon block={block} />
 
-                <div className="notion-callout-text">
+                <div className="unibook-callout-text">
                     <RichText value={block.properties?.title} block={block} />
                     {children}
                 </div>

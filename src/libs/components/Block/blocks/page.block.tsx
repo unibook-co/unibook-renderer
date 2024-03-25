@@ -1,50 +1,43 @@
 import { useRendererContext } from '@/hooks/useRendererContext';
 import { cs } from '@/libs/renderer-utils';
-
-import { BlockProps } from '../BlockProps';
+import { PageBlockProps } from '@/types';
 
 import { PageTitle } from './components/pageTitle';
 
-function NotFullPageBlock(props: BlockProps) {
+function NotFullPageBlock(props: PageBlockProps) {
     const { darkMode } = useRendererContext();
 
-    const { block, children, className, bodyClassName, hideBlockId } = props;
+    const { block, children, className } = props;
 
     const { page_small_text } = block.format || {};
-
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}`;
 
     return (
         <main
             className={cs(
-                'notion',
+                'unibook',
                 darkMode ? 'dark-mode' : 'light-mode',
-                'notion-page',
-                page_small_text && 'notion-small-text',
-                blockId,
-                className,
-                bodyClassName
+                'unibook-page',
+                page_small_text && 'unibook-small-text',
+                className
             )}
         >
-            <div className="notion-viewport" />
+            <div className="unibook-viewport" />
             {children}
         </main>
     );
 }
 
-function NotTopLevelPageBlock(props: BlockProps) {
+function NotTopLevelPageBlock(props: PageBlockProps) {
     const { mapPageUrl, components } = useRendererContext();
-    const { block, hideBlockId } = props;
-    const blockId = hideBlockId ? 'notion-block' : `notion-block-${block.id}}`;
+    const { block } = props;
 
     const blockColor = block.format?.block_color;
 
     return (
         <components.PageLink
             className={cs(
-                'notion-page-link',
-                blockColor && `notion-${blockColor}`,
-                blockId
+                'unibook-page-link',
+                blockColor && `unibook-${blockColor}`
             )}
             data-block-id={props.block.id}
             href={mapPageUrl(block.id)}
@@ -54,7 +47,7 @@ function NotTopLevelPageBlock(props: BlockProps) {
     );
 }
 
-export function PageBlock(props: BlockProps) {
+export function PageBlock(props: PageBlockProps) {
     const { level } = props;
 
     if (level !== 0) {

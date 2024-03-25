@@ -1,119 +1,144 @@
-import { BlockProps } from '@/components/Block/BlockProps';
 import { RendererContextValue } from '@/contexts';
+import { BaseBlockProps } from '@/types/blockProps.type';
 
-export type OverrideBlockProps<
-    element extends HTMLElement | undefined = HTMLDivElement,
-> = {
+import {
+    Block,
+    EmbedBlock,
+    ImageBlock,
+    PageLinkBlock,
+    VideoBlock,
+    AudioBlock,
+    BookmarkBlock,
+    BulletedListBlock,
+    CalloutBlock,
+    CodeBlock,
+    ColumnBlock,
+    ColumnListBlock,
+    DividerBlock,
+    EquationBlock,
+    FileBlock,
+    HeaderBlock,
+    SubHeaderBlock,
+    SubSubHeaderBlock,
+    NumberedListBlock,
+    QuoteBlock,
+    TableBlock,
+    TableOfContentsBlock,
+    TableRowBlock,
+    TextBlock,
+    TodoBlock,
+    ToggleBlock,
+    SyncBlock,
+    SyncPointerBlock,
+} from '.';
+
+export type OverrideBlockProps<B extends Block> = {
     children: React.ReactNode;
-    blockProps: BlockProps;
-    blockRef: element extends HTMLElement
-        ? React.RefObject<element>
-        : undefined;
+    blockProps: BaseBlockProps<B>;
     blockContext: RendererContextValue;
 };
 
-export type OverrideBlock<
-    element extends HTMLElement | undefined = HTMLDivElement,
-> = (props: OverrideBlockProps<element>) => React.ReactNode;
+export type OverrideBlock<B extends Block> = (
+    props: OverrideBlockProps<B>
+) => React.ReactNode;
 
-export type AliasOverrideBlock = OverrideBlock<HTMLAnchorElement>;
-export type AliasOverrideBlockProps = OverrideBlockProps<HTMLAnchorElement>;
+export type AliasOverrideBlock = OverrideBlock<PageLinkBlock>;
+export type AliasOverrideBlockProps = OverrideBlockProps<PageLinkBlock>;
 
-export type AssetOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type AssetOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type ImageOverrideBlock = OverrideBlock<ImageBlock>;
+export type ImageOverrideBlockProps = OverrideBlockProps<ImageBlock>;
 
-export type AudioOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type AudioOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type VideoOverrideBlock = OverrideBlock<VideoBlock>;
+export type VideoOverrideBlockProps = OverrideBlockProps<VideoBlock>;
 
-export type BookmarkOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type BookmarkOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type AudioOverrideBlock = OverrideBlock<AudioBlock>;
+export type AudioOverrideBlockProps = OverrideBlockProps<AudioBlock>;
 
-export type BulletedListOverrideBlock = OverrideBlock<HTMLLIElement>;
-export type BulletedListOverrideBlockProps = OverrideBlockProps<HTMLLIElement>;
+export type BookmarkOverrideBlock = OverrideBlock<BookmarkBlock>;
+export type BookmarkOverrideBlockProps = OverrideBlockProps<BookmarkBlock>;
 
-export type CalloutOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type CalloutOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type BulletedListOverrideBlock = OverrideBlock<BulletedListBlock>;
+export type BulletedListOverrideBlockProps =
+    OverrideBlockProps<BulletedListBlock>;
 
-export type CodeOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type CodeOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type CalloutOverrideBlock = OverrideBlock<CalloutBlock>;
+export type CalloutOverrideBlockProps = OverrideBlockProps<CalloutBlock>;
 
-export type ColumnOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type ColumnOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type CodeOverrideBlock = OverrideBlock<CodeBlock>;
+export type CodeOverrideBlockProps = OverrideBlockProps<CodeBlock>;
 
-export type ColumnListOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type ColumnListOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type ColumnOverrideBlock = OverrideBlock<ColumnBlock>;
+export type ColumnOverrideBlockProps = OverrideBlockProps<ColumnBlock>;
 
-export type DividerOverrideBlock = OverrideBlock<HTMLHRElement>;
-export type DividerOverrideBlockProps = OverrideBlockProps<HTMLHRElement>;
+export type ColumnListOverrideBlock = OverrideBlock<ColumnListBlock>;
+export type ColumnListOverrideBlockProps = OverrideBlockProps<ColumnListBlock>;
 
-export type DriveOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type DriveOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type DividerOverrideBlock = OverrideBlock<DividerBlock>;
+export type DividerOverrideBlockProps = OverrideBlockProps<DividerBlock>;
 
-export type EmbedOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type EmbedOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type EmbedOverrideBlock = OverrideBlock<EmbedBlock>;
+export type EmbedOverrideBlockProps = OverrideBlockProps<EmbedBlock>;
 
-export type EOIOverrideBlock = OverrideBlock<HTMLAnchorElement>;
-export type EOIOverrideBlockProps = OverrideBlockProps<HTMLAnchorElement>;
+export type EquationOverrideBlock = OverrideBlock<EquationBlock>;
+export type EquationOverrideBlockProps = OverrideBlockProps<EquationBlock>;
 
-export type EquationOverrideBlock = OverrideBlock<HTMLSpanElement>;
-export type EquationOverrideBlockProps = OverrideBlockProps<HTMLSpanElement>;
+export type FileOverrideBlock = OverrideBlock<FileBlock>;
+export type FileOverrideBlockProps = OverrideBlockProps<FileBlock>;
 
-export type FileOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type FileOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type HeaderOverrideBlock = OverrideBlock<HeaderBlock>;
+export type HeaderOverrideBlockProps = OverrideBlockProps<HeaderBlock>;
 
-export type HeaderOverrideBlock = OverrideBlock<HTMLHeadingElement>;
-export type HeaderOverrideBlockProps = OverrideBlockProps<HTMLHeadingElement>;
+export type SubHeaderOverrideBlock = OverrideBlock<SubHeaderBlock>;
+export type SubHeaderOverrideBlockProps = OverrideBlockProps<SubHeaderBlock>;
 
-export type SubHeaderOverrideBlock = OverrideBlock<HTMLHeadingElement>;
-export type SubHeaderOverrideBlockProps =
-    OverrideBlockProps<HTMLHeadingElement>;
-
-export type SubSubHeaderOverrideBlock = OverrideBlock<HTMLHeadingElement>;
+export type SubSubHeaderOverrideBlock = OverrideBlock<SubSubHeaderBlock>;
 export type SubSubHeaderOverrideBlockProps =
-    OverrideBlockProps<HTMLHeadingElement>;
+    OverrideBlockProps<SubSubHeaderBlock>;
 
-export type NumberedListOverrideBlock = OverrideBlock<HTMLLIElement>;
-export type NumberedListOverrideBlockProps = OverrideBlockProps<HTMLLIElement>;
+export type NumberedListOverrideBlock = OverrideBlock<NumberedListBlock>;
+export type NumberedListOverrideBlockProps =
+    OverrideBlockProps<NumberedListBlock>;
 
 // PageBlock Skip
 
-export type QuoteOverrideBlock = OverrideBlock<HTMLQuoteElement>;
-export type QuoteOverrideBlockProps = OverrideBlockProps<HTMLQuoteElement>;
+export type QuoteOverrideBlock = OverrideBlock<QuoteBlock>;
+export type QuoteOverrideBlockProps = OverrideBlockProps<QuoteBlock>;
 
-export type TableOverrideBlock = OverrideBlock<HTMLTableElement>;
-export type TableOverrideBlockProps = OverrideBlockProps<HTMLTableElement>;
+export type TableOverrideBlock = OverrideBlock<TableBlock>;
+export type TableOverrideBlockProps = OverrideBlockProps<TableBlock>;
 
-export type TableOfContentsOverrideBlock = OverrideBlock<HTMLDivElement>;
+export type TableOfContentsOverrideBlock = OverrideBlock<TableOfContentsBlock>;
 export type TableOfContentsOverrideBlockProps =
-    OverrideBlockProps<HTMLDivElement>;
+    OverrideBlockProps<TableOfContentsBlock>;
 
-export type TableRowOverrideBlock = OverrideBlock<HTMLTableRowElement>;
-export type TableRowOverrideBlockProps =
-    OverrideBlockProps<HTMLTableRowElement>;
+export type TableRowOverrideBlock = OverrideBlock<TableRowBlock>;
+export type TableRowOverrideBlockProps = OverrideBlockProps<TableRowBlock>;
 
-export type TextOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type TextOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type TextOverrideBlock = OverrideBlock<TextBlock>;
+export type TextOverrideBlockProps = OverrideBlockProps<TextBlock>;
 
-export type TodoOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type TodoOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type TodoOverrideBlock = OverrideBlock<TodoBlock>;
+export type TodoOverrideBlockProps = OverrideBlockProps<TodoBlock>;
 
-export type ToggleOverrideBlock = OverrideBlock<HTMLDetailsElement>;
-export type ToggleOverrideBlockProps = OverrideBlockProps<HTMLDetailsElement>;
+export type ToggleOverrideBlock = OverrideBlock<ToggleBlock>;
+export type ToggleOverrideBlockProps = OverrideBlockProps<ToggleBlock>;
 
-export type TransclusionContainerOverrideBlock = OverrideBlock<HTMLDivElement>;
+export type TransclusionContainerOverrideBlock = OverrideBlock<SyncBlock>;
 export type TransclusionContainerOverrideBlockProps =
-    OverrideBlockProps<HTMLDivElement>;
+    OverrideBlockProps<SyncBlock>;
 
-export type TransclusionReferenceOverrideBlock = OverrideBlock<undefined>;
+export type TransclusionReferenceOverrideBlock =
+    OverrideBlock<SyncPointerBlock>;
 export type TransclusionReferenceOverrideBlockProps =
-    OverrideBlockProps<undefined>;
+    OverrideBlockProps<SyncPointerBlock>;
 
-export type InjectionOverrideBlock = OverrideBlock<HTMLDivElement>;
-export type InjectionOverrideBlockProps = OverrideBlockProps<HTMLDivElement>;
+export type InjectionOverrideBlock = OverrideBlock<CodeBlock>;
+export type InjectionOverrideBlockProps = OverrideBlockProps<CodeBlock>;
 
 export type OverrideBlocks = {
     Alias?: AliasOverrideBlock;
-    Asset?: AssetOverrideBlock;
+    Image?: ImageOverrideBlock;
+    Video?: VideoOverrideBlock;
     Audio?: AudioOverrideBlock;
     Bookmark?: BookmarkOverrideBlock;
     BulletedList?: BulletedListOverrideBlock;
@@ -122,9 +147,7 @@ export type OverrideBlocks = {
     Column?: ColumnOverrideBlock;
     ColumnList?: ColumnListOverrideBlock;
     Divider?: DividerOverrideBlock;
-    Drive?: DriveOverrideBlock;
     Embed?: EmbedOverrideBlock;
-    EOI?: EOIOverrideBlock;
     Equation?: EquationOverrideBlock;
     File?: FileOverrideBlock;
     Header?: HeaderOverrideBlock;
