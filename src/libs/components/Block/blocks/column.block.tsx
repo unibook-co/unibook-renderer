@@ -17,7 +17,7 @@ export function ColumnBlock(props: ColumnBlockProps) {
     const columns =
         parent?.content?.length || Math.max(2, Math.ceil(1.0 / ratio));
 
-    const width = `calc((100% - (${columns - 1} * ${spacerWidth})) * ${ratio})`;
+    const width = `calc((100% - (${columns - 1} * ${spacerWidth})))`;
     const style = { width };
 
     return (
