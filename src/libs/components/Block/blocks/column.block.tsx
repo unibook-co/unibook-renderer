@@ -12,7 +12,7 @@ export function ColumnBlock(props: ColumnBlockProps) {
     const { block, children } = props;
 
     const spacerWidth = `min(32px, 4vw)`;
-    const ratio = block.format?.column_ratio || 0.5;
+    const ratio = block.format?.column_ratio || 1;
     const parent = page.blockMap[block.parent_id]?.value;
     const columns =
         parent?.content?.length || Math.max(2, Math.ceil(1.0 / ratio));
