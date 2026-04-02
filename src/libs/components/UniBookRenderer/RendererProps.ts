@@ -1,9 +1,9 @@
 import { MapImageUrlFn, MapPageUrlFn } from "@/contexts";
-import { PageMap, RendererComponents } from "@/types";
+import { PageInput, RendererComponents } from "@/types";
 import { OverrideBlocks } from "@/types/override.type";
 
 export type UniBookRendererProps = {
-  page: PageMap;
+  page: PageInput;
   components?: Partial<RendererComponents>;
   overrideBlocks?: Partial<OverrideBlocks>;
 

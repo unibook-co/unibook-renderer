@@ -40,6 +40,8 @@ function ExamplePage() {
 ### From Notion RecordMap
 
 > Warning: UniBook Renderer는 현재 Notion과 거의 동일한 타입을 사용하나, 추후 변경될 가능성이 높습니다.
+>
+> 기존 RecordMap과 `__version__: 3` RecordMap을 모두 지원합니다.
 
 ```tsx
 function ExamplePage() {
@@ -53,6 +55,8 @@ function ExamplePage() {
   )
 }
 ```
+
+`recordMap.block`이 기존 포맷이든 v3 포맷이든, 렌더러 내부에서 자동으로 정규화됩니다.
 
 ## Block Overriding
 

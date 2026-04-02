@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createContext, useMemo } from 'react';
+import { useMemo } from 'react';
 
 import { RendererComponents } from '@/types';
 import { OverrideBlocks } from '@/types/override.type';
 import { PageMap } from '@/types/page.type';
 
+import { RendererContext } from './context';
 import {
     defaultRendererComponents,
     defaultRendererContextValue,
@@ -12,12 +13,7 @@ import {
 import {
     MapImageUrlFn,
     MapPageUrlFn,
-    RendererContextValue,
 } from './rendererContext.type';
-
-export const RendererContext = createContext<RendererContextValue>(
-    defaultRendererContextValue
-);
 
 export type RendererContextProviderProps = {
     page: PageMap;
